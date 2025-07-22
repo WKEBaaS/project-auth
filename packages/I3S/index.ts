@@ -4,7 +4,9 @@ import { BetterAuthPlugin } from 'better-auth';
 import { schema } from './schema';
 import { getI3SAdapter } from './adapter';
 
-export interface I3SOptions {}
+export interface I3SOptions {
+	entityId?: number; // Optional entityId to customize
+}
 
 export const I3S = (opts?: I3SOptions) => {
 	return {
@@ -22,7 +24,7 @@ export const I3S = (opts?: I3SOptions) => {
 									}
 									const adapter = getI3SAdapter(ctx.context.adapter);
 									const object = await adapter.createObject({
-										entityId: 2, // Default entityId, can be customized
+										entityId: opts?.entityId ?? 2, // Default to 2 if not provided
 									});
 									return {
 										data: {

@@ -1,6 +1,6 @@
 {
-	"name": "@youmin1017/i3s",
-	"version": "0.0.1",
+	"name": "@youmin1017/better-auth-i3s",
+	"version": "0.0.2",
 	"private": false,
 	"main": "index.ts",
 	"types": "index.ts",
@@ -9,6 +9,5 @@
 		"zod": "^4.0.5"
 	},
 	"devDependencies": {
-		"bun-types": "latest"
 	}
 }
