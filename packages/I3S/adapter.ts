@@ -1,4 +1,4 @@
-import { Adapter, BetterAuthPlugin } from 'better-auth';
+import { Adapter } from 'better-auth';
 import { Object } from './schema';
 
 export interface I3SOptions {

@@ -17,5 +17,8 @@
 		"drizzle-kit": "^0.31.4",
 		"pg": "^8.16.3"
 	},
-	"module": "src/index.js"
+	"module": "src/index.js",
+	"workspaces": [
+		"packages/*"
+	]
 }

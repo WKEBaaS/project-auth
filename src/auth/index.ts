@@ -1,5 +1,5 @@
 /* Better-Auth Related */
-import { I3S } from '@/auth/plugins';
+import { I3S } from '@youmin1017/better-auth-i3s';
 import { db } from '@/db';
 import * as schema from '@/db/schema';
 import { betterAuth, BetterAuthOptions } from 'better-auth';
