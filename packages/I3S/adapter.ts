@@ -1,9 +1,6 @@
 import { Adapter } from 'better-auth';
 import { Object } from './schema';
 
-export interface I3SOptions {
-}
-
 export const getI3SAdapter = (adapter: Adapter) => {
 	return {
 		createObject: async (data: Omit<Object, 'id'>) => {

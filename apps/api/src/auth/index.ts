@@ -1,7 +1,7 @@
 /* Better-Auth Related */
 import { I3S } from '@youmin1017/better-auth-i3s';
-import { db } from '@/db';
-import * as schema from '@/db/schema';
+import { db } from '../db';
+import * as schema from '../db/schema';
 import { betterAuth, BetterAuthOptions } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { openAPI } from 'better-auth/plugins';
