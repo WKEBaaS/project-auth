@@ -5,11 +5,11 @@
 		"dev": "bun run --watch src/index.ts"
 	},
 	"dependencies": {
-		"better-auth": "^1.3.1",
+		"better-auth": "^1.3.4",
 		"drizzle-orm": "^0.44.3",
 		"elysia": "latest",
 		"@elysiajs/cors": "^1.3.3",
-		"@youmin1017/better-auth-i3s": "0.0.4"
+		"@youmin1017/better-auth-i3s": "^0.0.5"
 	},
 	"devDependencies": {
 		"@types/bun": "^1.2.19",
