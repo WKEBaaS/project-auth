@@ -24,7 +24,8 @@ const options = {
 			generateId: () => Bun.randomUUIDv7(),
 		},
 		defaultCookieAttributes: {
-			secure: false,
+			sameSite: 'None',
+			secure: true,
 		},
 	},
 	emailAndPassword: {
