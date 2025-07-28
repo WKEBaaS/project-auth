@@ -6,6 +6,9 @@ import { config } from '@/config';
 const app = new Elysia()
 	.use(cors({
 		origin: config.trustedOrigins,
+		methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+		credentials: true,
+		allowedHeaders: ['Content-Type', 'Authorization'],
 	}))
 	.mount(auth.handler)
 	.get('/', ({ redirect }) => redirect('/api/auth/reference'))
