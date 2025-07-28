@@ -8,7 +8,7 @@ import { openAPI } from 'better-auth/plugins';
 import { genSocialProviders } from './providers';
 
 const options = {
-	trustedOrigins: ['http://localhost:3000', 'http://localhost:5173'],
+	trustedOrigins: Bun.env.TRUSTED_ORIGINS?.split(',') || undefined,
 	database: drizzleAdapter(db, {
 		provider: 'pg',
 		usePlural: true,
