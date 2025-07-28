@@ -24,6 +24,7 @@ export const genSocialProviders = () => {
 			console.warn('GitHub social provider is enabled but missing credentials');
 		}
 	}
+
 	if (Bun.env.DISCORD_ENABLED == 'true' || Bun.env.DISCORD_ENABLED == '1') {
 		if (Bun.env.DISCORD_CLIENT_ID && Bun.env.DISCORD_CLIENT_SECRET) {
 			console.info('Discord social provider is enabled');

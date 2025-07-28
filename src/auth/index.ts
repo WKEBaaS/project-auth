@@ -7,8 +7,10 @@ import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { openAPI } from 'better-auth/plugins';
 import { genSocialProviders } from './providers';
 
+const trustedOrigins = Bun.env.TRUSTED_ORIGINS?.split(',') || undefined;
+
 const options = {
-	trustedOrigins: Bun.env.TRUSTED_ORIGINS?.split(',') || undefined,
+	trustedOrigins: trustedOrigins,
 	database: drizzleAdapter(db, {
 		provider: 'pg',
 		usePlural: true,
@@ -21,6 +23,10 @@ const options = {
 	advanced: {
 		database: {
 			generateId: () => Bun.randomUUIDv7(),
+		},
+		crossSubDomainCookies: {
+			enabled: true,
+			domain: trustedOrigins?.[0] || 'localhost',
 		},
 	},
 	emailAndPassword: {
