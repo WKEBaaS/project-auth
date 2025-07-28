@@ -6,11 +6,10 @@ import { betterAuth, BetterAuthOptions } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { openAPI } from 'better-auth/plugins';
 import { genSocialProviders } from './providers';
-
-const trustedOrigins = Bun.env.TRUSTED_ORIGINS?.split(',') || undefined;
+import { config } from '@/config';
 
 const options = {
-	trustedOrigins: trustedOrigins,
+	trustedOrigins: config.trustedOrigins,
 	database: drizzleAdapter(db, {
 		provider: 'pg',
 		usePlural: true,
@@ -26,7 +25,7 @@ const options = {
 		},
 		crossSubDomainCookies: {
 			enabled: true,
-			domain: trustedOrigins?.[0] || 'localhost',
+			domain: config.trustedOrigins?.[0] || 'localhost',
 		},
 	},
 	emailAndPassword: {

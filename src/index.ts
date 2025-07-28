@@ -1,15 +1,22 @@
 import { Elysia } from 'elysia';
 import { cors } from '@elysiajs/cors';
-import { auth } from './auth';
+import { auth } from '@/auth';
+import { config } from '@/config';
 
 const app = new Elysia()
-	.use(cors())
+	.use(cors({
+		origin: config.trustedOrigins,
+	}))
 	.mount(auth.handler)
 	.get('/', ({ redirect }) => redirect('/api/auth/reference'))
 	.listen(Bun.env.PORT || 3000);
 
 // Handle Ctrl+C gracefully
 process.on('SIGINT', () => {
+	process.exit(0);
+});
+// Handle SIGTERM gracefully (e.g., for Docker/Kubernetes)
+process.on('SIGTERM', () => {
 	process.exit(0);
 });
 
