@@ -23,10 +23,10 @@ const options = {
 		database: {
 			generateId: () => Bun.randomUUIDv7(),
 		},
-		// defaultCookieAttributes: {
-		// 	sameSite: 'None',
-		// 	secure: true,
-		// },
+		defaultCookieAttributes: {
+			sameSite: 'None',
+			secure: true,
+		},
 	},
 	emailAndPassword: {
 		enabled: true,
