@@ -23,9 +23,9 @@ const options = {
 		database: {
 			generateId: () => Bun.randomUUIDv7(),
 		},
-		crossSubDomainCookies: {
-			enabled: true,
-			domain: config.trustedOrigins?.[0] || 'localhost',
+		defaultCookieAttributes: {
+			sameSite: 'None',
+			secure: true,
 		},
 	},
 	emailAndPassword: {
