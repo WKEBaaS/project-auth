@@ -1,11 +1,10 @@
-import { I3S } from '@youmin1017/better-auth-i3s';
+import { config } from '@/config';
 import { db } from '@/db';
 import * as schema from '@/db/schema';
 import { betterAuth, BetterAuthOptions } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { openAPI } from 'better-auth/plugins';
+import { genPlugins } from './plugins';
 import { genSocialProviders } from './providers';
-import { config } from '@/config';
 
 const options = {
 	trustedOrigins: config.trustedOrigins,
@@ -14,10 +13,6 @@ const options = {
 		usePlural: true,
 		schema: schema,
 	}),
-	plugins: [
-		I3S(),
-		openAPI(),
-	],
 	advanced: {
 		database: {
 			generateId: () => Bun.randomUUIDv7(),
@@ -28,8 +23,9 @@ const options = {
 		},
 	},
 	emailAndPassword: {
-		enabled: true,
+		enabled: config.enailAndPassword.enabled,
 	},
+	plugins: genPlugins(),
 	socialProviders: genSocialProviders(),
 } satisfies BetterAuthOptions;
 

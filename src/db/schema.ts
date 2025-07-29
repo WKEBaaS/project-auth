@@ -59,6 +59,13 @@ export const verifications = authSchema.table('verifications', {
 	updatedAt: timestamp('updated_at').$defaultFn(() => new Date()),
 });
 
+export const jwks = authSchema.table('jwks', {
+	id: uuid('id').primaryKey(),
+	publicKey: text('public_key').notNull(),
+	privateKey: text('private_key').notNull(),
+	createdAt: timestamp('created_at').$defaultFn(() => new Date()).notNull(),
+});
+
 export const objects = dboSchema.table('objects', {
 	id: uuid('id').primaryKey(),
 	entityId: integer('entity_id'),
