@@ -1,7 +1,20 @@
 import { Elysia } from 'elysia';
 import { cors } from '@elysiajs/cors';
-import { auth } from '@/auth';
+import { auth, OpenAPI } from '@/auth';
+import { swagger } from '@elysiajs/swagger';
 import { config } from '@/config';
+
+// TODO: wait the pull request elysiajs/elysia-swagger#224 is merged
+// Then we can just use swagger with config { path: '/api/auth/docs' }
+// For now, we use a custom prefix for the docs route
+const docs = new Elysia({ prefix: '/api/auth' })
+	.use(swagger({
+		path: '/docs',
+		documentation: {
+			components: await OpenAPI.components,
+			paths: await OpenAPI.getPaths(),
+		},
+	}));
 
 const app = new Elysia()
 	.use(cors({
@@ -10,8 +23,9 @@ const app = new Elysia()
 		credentials: true,
 		allowedHeaders: ['Content-Type', 'Authorization'],
 	}))
+	.use(docs)
+	.get('/', () => 'Welcome to the Elysia Auth API!')
 	.mount(auth.handler)
-	.get('/', ({ redirect }) => redirect('/api/auth/reference'))
 	.listen(Bun.env.PORT || 3000);
 
 // Handle Ctrl+C gracefully
