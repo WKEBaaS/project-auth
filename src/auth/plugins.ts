@@ -9,6 +9,7 @@ export const genPlugins = () => {
 	plugins.push(I3S(), openAPI());
 
 	if (config.jwt.enabled) {
+		console.log(`JWT plugin enabled: ${config.jwt.enabled}`);
 		plugins.push(
 			bearer(),
 			jwt({
