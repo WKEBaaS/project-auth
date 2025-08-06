@@ -1,6 +1,8 @@
 import { isEnabled } from '@/utils';
 
-const trustedOrigins = Bun.env.TRUSTED_ORIGINS?.split(',') || undefined;
+const trustedOrigins = Bun.env.TRUSTED_ORIGINS && Bun.env.TRUSTED_ORIGINS.length > 0
+	? Bun.env.TRUSTED_ORIGINS.split(',')
+	: undefined;
 
 export const config = {
 	trustedOrigins: trustedOrigins,
