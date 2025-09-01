@@ -3,8 +3,9 @@ import { db } from '@/db';
 import * as schema from '@/db/schema';
 import { betterAuth, BetterAuthOptions } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { genPlugins } from './plugins';
 import { genSocialProviders } from './providers';
+import { bearer, jwt, openAPI } from 'better-auth/plugins';
+import { I3S } from '@youmin1017/better-auth-i3s';
 
 const options = {
 	trustedOrigins: config.trustedOrigins,
@@ -25,7 +26,21 @@ const options = {
 	emailAndPassword: {
 		enabled: config.enailAndPassword.enabled,
 	},
-	plugins: genPlugins(),
+	plugins: [
+		I3S(),
+		openAPI(),
+		bearer(),
+		jwt({
+			jwks: {
+				disablePrivateKeyEncryption: true,
+			},
+			schema: {
+				jwks: {
+					modelName: 'jwk',
+				},
+			},
+		}),
+	],
 	socialProviders: genSocialProviders(),
 } satisfies BetterAuthOptions;
 

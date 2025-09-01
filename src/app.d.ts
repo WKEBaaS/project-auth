@@ -6,7 +6,6 @@ declare module 'bun' {
 		// Optional Configurations
 		// Social Providers
 		PORT?: string; // Port to run the server on
-		JWT_ENABLED?: string; // Enable JWT authentication
 		EMAIL_AND_PASSWORD_ENABLED?: string; // Enable email/password authentication
 		TRUSTED_ORIGINS?: string; // Comma-separated list of trusted origins for CORS
 		GOOGLE_ENABLED?: string; // Enable Google authentication
