@@ -4,9 +4,13 @@ declare module "bun" {
     BETTER_AUTH_SECRET: string; // Secret key for signing tokens
     DATABASE_URL: string; // Database connection string
     // Optional Configurations
+    DEBUG?: string; // Enable debug mode
     COOKIE_SECURE?: string; // Set to 'true' if using HTTPS
     COOKIE_SAME_SITE?: string; // 'Lax', 'Strict', or 'None'
     COOKIE_PREFIX?: string; // Cookie prefix, e.g., 'host', 'secure'
+    // Logger
+    LOGGER_ENABLED?: string; // Enable or disable logging
+    LOGGER_LEVEL?: string; // Set logging level: 'error', 'warn', 'info', 'debug'
     // Social Providers
     PORT?: string; // Port to run the server on
     JWT_ENABLED?: string; // Enable JWT authentication

@@ -7,6 +7,7 @@ const trustedOrigins =
 
 export const config = {
   debug: isEnabled(Bun.env.DEBUG),
+  nodeEnv: (Bun.env.NODE_ENV as "development" | "production" | undefined),
   trustedOrigins: trustedOrigins,
   enailAndPassword: {
     enabled: isEnabled(Bun.env.EMAIL_AND_PASSWORD_ENABLED),
@@ -17,7 +18,13 @@ export const config = {
   cookie: {
     secure: isEnabled(Bun.env.COOKIE_SECURE),
     sameSite: (Bun.env.COOKIE_SAME_SITE as "Lax" | "Strict" | "None") || "Lax",
-    prefix: (Bun.env.COOKIE_PREFIX as "host" | "secure") || undefined,
+    prefix: (Bun.env.COOKIE_PREFIX as "host" | "secure" | undefined) ||
+      undefined,
+  },
+  logger: {
+    enabled: isEnabled(Bun.env.LOGGER_ENABLED),
+    level: (Bun.env.LOGGER_LEVEL as "error" | "warn" | "info" | "debug") ||
+      "info",
   },
   providers: {
     google: {

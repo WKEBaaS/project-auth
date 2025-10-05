@@ -9,6 +9,10 @@ import { I3S } from "@youmin1017/better-auth-i3s";
 
 const options = {
   trustedOrigins: config.trustedOrigins,
+  logger: {
+    disabled: !config.logger.enabled,
+    level: config.logger.level,
+  },
   database: drizzleAdapter(db, {
     provider: "pg",
     usePlural: true,
