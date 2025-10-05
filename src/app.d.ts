@@ -5,6 +5,8 @@ declare module "bun" {
     DATABASE_URL: string; // Database connection string
     // Optional Configurations
     COOKIE_SECURE?: string; // Set to 'true' if using HTTPS
+    COOKIE_SAME_SITE?: string; // 'Lax', 'Strict', or 'None'
+    COOKIE_PREFIX?: string; // Cookie prefix, e.g., 'host', 'secure'
     // Social Providers
     PORT?: string; // Port to run the server on
     JWT_ENABLED?: string; // Enable JWT authentication
