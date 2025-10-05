@@ -17,6 +17,7 @@ const docs = new Elysia({ prefix: '/api/auth' })
 	}));
 
 const app = new Elysia()
+	.mount(auth.handler)
 	.use(cors({
 		origin: config.trustedOrigins,
 		methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -25,7 +26,6 @@ const app = new Elysia()
 	}))
 	.use(docs)
 	.get('/', () => 'Welcome to the Elysia Auth API!')
-	.mount(auth.handler)
 	.listen(Bun.env.PORT || 3000);
 
 // Handle Ctrl+C gracefully
