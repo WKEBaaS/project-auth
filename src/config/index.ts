@@ -6,8 +6,6 @@ const trustedOrigins =
     : undefined;
 
 export const config = {
-  debug: isEnabled(Bun.env.DEBUG),
-  nodeEnv: (Bun.env.NODE_ENV as "development" | "production" | undefined),
   trustedOrigins: trustedOrigins,
   enailAndPassword: {
     enabled: isEnabled(Bun.env.EMAIL_AND_PASSWORD_ENABLED),
@@ -45,6 +43,6 @@ export const config = {
   },
 };
 
-if (config.debug) {
+if (config.logger.level === "debug") {
   console.log("Config:", config);
 }

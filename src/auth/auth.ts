@@ -12,6 +12,9 @@ const options = {
   logger: {
     disabled: !config.logger.enabled,
     level: config.logger.level,
+    log: (level, message, ...args) => {
+      console.log(`[${level}] ${message}`, ...args);
+    },
   },
   database: drizzleAdapter(db, {
     provider: "pg",
@@ -22,10 +25,9 @@ const options = {
     database: {
       generateId: () => Bun.randomUUIDv7(),
     },
+    useSecureCookies: config.cookie.secure,
     defaultCookieAttributes: {
       sameSite: config.cookie.sameSite,
-      secure: config.cookie.secure,
-      prefix: config.cookie.prefix,
     },
   },
   emailAndPassword: {
