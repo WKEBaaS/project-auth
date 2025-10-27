@@ -11,6 +11,7 @@ export const config = {
 	},
 	jwt: {
 		enabled: isEnabled(Bun.env.JWT_ENABLED),
+		expirationTime: Bun.env.JWT_EXPIRATION_TIME || '15min',
 	},
 	cookie: {
 		secure: isEnabled(Bun.env.COOKIE_SECURE),

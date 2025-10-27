@@ -42,6 +42,19 @@ const options = {
 			jwks: {
 				disablePrivateKeyEncryption: true,
 			},
+			jwt: {
+				expirationTime: config.jwt.expirationTime,
+				definePayload({ user }) {
+					return {
+						role: user.role,
+						email: user.email,
+						emailVerified: user.emailVerified,
+						createdAt: user.createdAt,
+						updatedAt: user.updatedAt,
+						image: user.image,
+					};
+				},
+			},
 			schema: {
 				jwks: {
 					modelName: 'jwk',
