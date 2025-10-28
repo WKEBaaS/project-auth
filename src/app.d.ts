@@ -4,6 +4,7 @@ declare module 'bun' {
 		BETTER_AUTH_SECRET: string; // Secret key for signing tokens
 		DATABASE_URL: string; // Database connection string
 		// Optional Configurations
+		JWT_EXPIRATION_TIME?: string; // e.g., '15min', '1h', '1d'
 		COOKIE_SECURE?: string; // Set to 'true' if using HTTPS
 		COOKIE_SAME_SITE?: string; // 'Lax', 'Strict', or 'None'
 		COOKIE_DOMAIN?: string; // Domain for the cookie
@@ -12,7 +13,6 @@ declare module 'bun' {
 		LOGGER_LEVEL?: string; // Set logging level: 'error', 'warn', 'info', 'debug'
 		// Social Providers
 		PORT?: string; // Port to run the server on
-		JWT_ENABLED?: string; // Enable JWT authentication
 		EMAIL_AND_PASSWORD_ENABLED?: string; // Enable email/password authentication
 		TRUSTED_ORIGINS?: string; // Comma-separated list of trusted origins for CORS
 		GOOGLE_ENABLED?: string; // Enable Google authentication

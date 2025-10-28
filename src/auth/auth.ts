@@ -31,6 +31,15 @@ const options = {
 			domain: config.cookie.domain,
 		},
 	},
+	user: {
+		additionalFields: {
+			role: {
+				type: 'string',
+				defaultValue: 'authenticated',
+				returned: true,
+			},
+		},
+	},
 	emailAndPassword: {
 		enabled: config.enailAndPassword.enabled,
 	},
@@ -45,6 +54,7 @@ const options = {
 			jwt: {
 				expirationTime: config.jwt.expirationTime,
 				definePayload({ user }) {
+					console.log('Defining JWT payload for user:', user);
 					return {
 						role: user.role,
 						email: user.email,
